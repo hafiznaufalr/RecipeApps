@@ -111,3 +111,33 @@ data class Recipe(
     @SerializedName("strYoutube")
     val strYoutube: String
 )
+
+data class CategoryResponse(
+    @SerializedName("categories")
+    val categories: List<Category>
+)
+
+data class Category(
+    @SerializedName("idCategory")
+    val idCategory: String,
+    @SerializedName("strCategory")
+    val strCategory: String,
+    @SerializedName("strCategoryDescription")
+    val strCategoryDescription: String,
+    @SerializedName("strCategoryThumb")
+    val strCategoryThumb: String
+)
+
+data class FilterResponse(
+    @SerializedName("categories")
+    val meals: List<Filter>
+)
+
+data class Filter(
+    @SerializedName("idMeal")
+    val idMeal: String,
+    @SerializedName("strMeal")
+    val strMeal: String,
+    @SerializedName("strMealThumb")
+    val strMealThumb: String
+)

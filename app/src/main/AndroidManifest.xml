@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.category.CategoryActivity"/>
+        <activity android:name=".ui.detail.DetailActivity"/>
+        <activity android:name=".ui.search.SearchActivity"/>
+        <activity android:name=".ui.bookmark.BookMarkActivity"/>
+
+
     </application>
 
 </manifest>

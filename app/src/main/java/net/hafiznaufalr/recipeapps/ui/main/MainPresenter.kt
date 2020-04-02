@@ -33,4 +33,19 @@ class MainPresenter: BasePresenter<MainContract.View>, MainContract.Presenter {
             }
         }
     }
+
+    override fun getDataCategory() {
+        GlobalScope.launch(Dispatchers.Main) {
+            view?.showProgress()
+            try {
+                val data = dataSource.getCategoriesRecipe()
+                val response = data.await()
+                view?.onCategoryResponse(response)
+                view?.hideProgress()
+            }catch (throwable: Throwable){
+                view?.onCategoryFailure(throwable)
+                view?.hideProgress()
+            }
+        }
+    }
 }
