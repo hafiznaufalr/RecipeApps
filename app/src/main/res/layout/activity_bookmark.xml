@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ui.bookmark.BookMarkActivity">
+
+        <ImageView
+            android:id="@+id/iv_arrow_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_arrow_back_24dp"
+            android:contentDescription="@string/image"
+            />
+
+        <TextView
+            android:id="@+id/tv_title_bookmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/iv_arrow_back"
+            android:layout_toRightOf="@id/iv_arrow_back"
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:text="Bookmark"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bookmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_bookmark"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_recipe"
+            />
+
+    <TextView
+        android:id="@+id/tv_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_bookmark"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppinssemibold"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        />
+</RelativeLayout>

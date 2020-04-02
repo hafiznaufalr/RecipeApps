@@ -11,6 +11,7 @@ import net.hafiznaufalr.recipeapps.model.Category
 import net.hafiznaufalr.recipeapps.model.CategoryResponse
 import net.hafiznaufalr.recipeapps.model.RecipeResponse
 import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
+import net.hafiznaufalr.recipeapps.ui.bookmark.BookMarkActivity
 import net.hafiznaufalr.recipeapps.ui.search.SearchActivity
 
 class MainActivity : BaseActivity(), MainContract.View {
@@ -22,15 +23,20 @@ class MainActivity : BaseActivity(), MainContract.View {
         getData()
         prepareRv()
         refresh()
-        gotoSearch()
+        doMove()
     }
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
 
-    private fun gotoSearch() {
+    private fun doMove() {
         et_search.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        iv_fav.setOnClickListener {
+            val intent = Intent(this, BookMarkActivity::class.java)
             startActivity(intent)
         }
     }

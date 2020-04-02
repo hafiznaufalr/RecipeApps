@@ -1,13 +1,11 @@
-package net.hafiznaufalr.recipeapps.ui.category
+package net.hafiznaufalr.recipeapps.ui.bookmark
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_recipe.view.*
@@ -15,14 +13,14 @@ import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.db.BookmarkHelper
 import net.hafiznaufalr.recipeapps.model.Filter
 
-class CategoryAdapter(
-    private val context: Context,
-    private val data: List<Filter>
-) : RecyclerView.Adapter<CategoryAdapter.MyHolder>() {
+class BookmarkAdapter(private val context: Context,
+                      private val data : List<Filter>
+): RecyclerView.Adapter<BookmarkAdapter.MyHolder>(){
+
     lateinit var bookmarkHelper: BookmarkHelper
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int) =
-        MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe, p0, false))
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int)
+            = MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe,p0,false))
 
 
     override fun getItemCount(): Int {
@@ -38,7 +36,14 @@ class CategoryAdapter(
         bookmarkHelper.open()
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
+    }
 
+    private fun displayBookmarkStatus(view: View, bookmarked: Boolean) {
+        if (bookmarked) {
+            view.iv_bookmark.setImageResource(R.drawable.ic_bookmark_24dp)
+        } else {
+            view.iv_bookmark.setImageResource(R.drawable.ic_bookmark_border_24dp)
+        }
     }
 
     private fun prepareBookmark(view: View, position: Int) {
@@ -54,16 +59,6 @@ class CategoryAdapter(
         }
     }
 
-
-    private fun displayBookmarkStatus(view: View, bookmarked: Boolean) {
-        if (bookmarked) {
-            view.iv_bookmark.setImageResource(R.drawable.ic_bookmark_24dp)
-        } else {
-            view.iv_bookmark.setImageResource(R.drawable.ic_bookmark_border_24dp)
-        }
-    }
-
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 
 }

@@ -39,7 +39,7 @@
                     android:drawablePadding="16dp"
                     android:focusable="false"
                     android:fontFamily="@font/poppinssemibold"
-                    android:hint="Search"
+                    android:hint="@string/search"
                     android:longClickable="false"
                     android:padding="8dp" />
             </androidx.cardview.widget.CardView>
@@ -51,7 +51,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="16dp"
-                android:src="@drawable/ic_favorite_24dp" />
+                android:contentDescription="@string/image"
+                android:src="@drawable/ic_bookmark_24dp" />
 
             <TextView
                 android:id="@+id/tv_random"
@@ -78,6 +79,7 @@
                     android:id="@+id/iv_random"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/image"
                     android:scaleType="centerCrop"
                     tools:src="@drawable/sample" />
 
@@ -101,7 +103,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Category"
+                android:text="@string/category"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -123,7 +125,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Recently Viewed"
+                android:text="@string/recently_viewed"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -133,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_recently_viewed"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                />
+                tools:listitem="@layout/item_recipe" />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
