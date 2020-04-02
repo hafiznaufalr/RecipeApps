@@ -2,4 +2,6 @@
     <string name="app_name">RecipeApps</string>
     <string name="imagefood">imageFood</string>
     <string name="on_failure">Failed Get Data</string>
+    <string name="image">image</string>
+    <string name="id">1234</string>
 </resources>

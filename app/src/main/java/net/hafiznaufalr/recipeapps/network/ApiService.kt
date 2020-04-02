@@ -19,6 +19,6 @@ interface ApiService {
 
     @GET("api/json/v1/1/filter.php")
     fun getRecipeByCategory(
-        @Query("c") category: String
+        @Query("c") category: String?
     ): Deferred<FilterResponse>
 }

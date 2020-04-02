@@ -129,7 +129,7 @@ data class Category(
 )
 
 data class FilterResponse(
-    @SerializedName("categories")
+    @SerializedName("meals")
     val meals: List<Filter>
 )
 

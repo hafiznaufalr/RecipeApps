@@ -1,7 +1,6 @@
 package net.hafiznaufalr.recipeapps.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,14 +9,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.model.Category
 import net.hafiznaufalr.recipeapps.model.CategoryResponse
-import net.hafiznaufalr.recipeapps.model.Recipe
 import net.hafiznaufalr.recipeapps.model.RecipeResponse
 import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
 import net.hafiznaufalr.recipeapps.ui.search.SearchActivity
 
 class MainActivity : BaseActivity(), MainContract.View {
     lateinit var presenter: MainContract.Presenter
-    lateinit var adapter: MainAdapter
+    lateinit var adapter: CategoryRecipeAdapter
     private var listCategory: MutableList<Category> = mutableListOf()
     override fun onActivityReady(savedInstanceState: Bundle?) {
         setPresenter()
@@ -38,7 +36,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     private fun prepareRv() {
-        adapter = MainAdapter(this, listCategory)
+        adapter = CategoryRecipeAdapter(this, listCategory)
         rv_category.adapter = adapter
     }
 
