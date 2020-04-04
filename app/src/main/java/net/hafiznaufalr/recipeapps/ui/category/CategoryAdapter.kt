@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.item_recipe.view.*
 import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.db.BookmarkHelper
 import net.hafiznaufalr.recipeapps.model.Filter
+import net.hafiznaufalr.recipeapps.ui.search.SearchAdapter
 
 class CategoryAdapter(
     private val context: Context,
@@ -21,9 +22,11 @@ class CategoryAdapter(
 ) : RecyclerView.Adapter<CategoryAdapter.MyHolder>() {
     lateinit var bookmarkHelper: BookmarkHelper
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int) =
-        MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe, p0, false))
-
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyHolder {
+        bookmarkHelper = BookmarkHelper.getInstance(context)
+        bookmarkHelper.open()
+        return MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe, p0, false))
+    }
 
     override fun getItemCount(): Int {
         return data.size
@@ -34,8 +37,6 @@ class CategoryAdapter(
         view.tv_id_recipe.text = data[position].idMeal
         view.tv_name_recipe.text = data[position].strMeal
         Glide.with(context).load(data[position].strMealThumb).into(view.iv_recipe)
-        bookmarkHelper = BookmarkHelper.getInstance(context)
-        bookmarkHelper.open()
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
 
@@ -43,12 +44,20 @@ class CategoryAdapter(
 
     private fun prepareBookmark(view: View, position: Int) {
         view.iv_bookmark.setOnClickListener {
-            if(bookmarkHelper.isBookmarked(data[position].idMeal)){
+            if (bookmarkHelper.isBookmarked(data[position].idMeal)) {
                 bookmarkHelper.deleteRecipe(data[position].idMeal)
-                Toast.makeText(context, context.getString(R.string.remove_bookmark), Toast.LENGTH_SHORT).show()
-            }else{
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.remove_bookmark),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 bookmarkHelper.insertRecipe(data[position])
-                Toast.makeText(context, context.getString(R.string.add_bookmark), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.add_bookmark),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
         }

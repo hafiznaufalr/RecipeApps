@@ -19,8 +19,11 @@ class BookmarkAdapter(private val context: Context,
 
     lateinit var bookmarkHelper: BookmarkHelper
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int)
-            = MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe,p0,false))
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyHolder {
+        bookmarkHelper = BookmarkHelper.getInstance(context)
+        bookmarkHelper.open()
+        return MyHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_recipe, p0, false))
+    }
 
 
     override fun getItemCount(): Int {
@@ -32,8 +35,6 @@ class BookmarkAdapter(private val context: Context,
         view.tv_id_recipe.text = data[position].idMeal
         view.tv_name_recipe.text = data[position].strMeal
         Glide.with(context).load(data[position].strMealThumb).into(view.iv_recipe)
-        bookmarkHelper = BookmarkHelper.getInstance(context)
-        bookmarkHelper.open()
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
     }

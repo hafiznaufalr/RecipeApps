@@ -40,17 +40,18 @@ class CustomEditText: AppCompatEditText {
                     }
                 }
                 when {
-                    isClearButtonClicked -> when {
-                        event.action == MotionEvent.ACTION_DOWN -> {
+                    isClearButtonClicked -> when (event.action) {
+                        MotionEvent.ACTION_DOWN -> {
                             mClearButtonImage = ResourcesCompat.getDrawable(resources, R.drawable.ic_close_24dp, null) as Drawable
                             showClearButton()
                             return@OnTouchListener true
                         }
-                        event.action == MotionEvent.ACTION_UP -> {
+                        MotionEvent.ACTION_UP -> {
                             mClearButtonImage = ResourcesCompat.getDrawable(resources, R.drawable.ic_close_24dp, null) as Drawable
                             when {
                                 text != null -> text?.clear()
                             }
+
                             hideClearButton()
                             return@OnTouchListener true
                         }
@@ -83,6 +84,7 @@ class CustomEditText: AppCompatEditText {
     }
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun hideClearButton() {
+        requestFocus()
         setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)// Start of text.
     }
 

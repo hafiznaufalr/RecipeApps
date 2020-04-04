@@ -26,4 +26,9 @@ interface ApiService {
     fun searchRecipe(
         @Query("s") search: String?
     ): Deferred<FilterResponse>
+
+    @GET("api/json/v1/1/lookup.php")
+    fun getDetailRecipe(
+        @Query("i") idMeal: String?
+    ): Deferred<Recipe>
 }
