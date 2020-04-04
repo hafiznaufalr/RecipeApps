@@ -23,7 +23,7 @@ interface ApiService {
     ): Deferred<FilterResponse>
 
     @GET("api/json/v1/1/search.php")
-    fun findRecipe(
+    fun searchRecipe(
         @Query("s") search: String?
     ): Deferred<FilterResponse>
 }

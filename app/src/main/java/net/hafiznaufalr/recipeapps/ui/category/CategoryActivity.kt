@@ -62,6 +62,7 @@ class CategoryActivity : BaseActivity(), CategoryContract.View {
         listRecipe.clear()
         listRecipe.addAll(data.meals)
         adapter.notifyDataSetChanged()
+
     }
 
     override fun onDataCategoryFailure(throwable: Throwable) {
