@@ -3,7 +3,7 @@ Simple recipe application that displays a list of meals and their recipes.
 
 Download APK [here](https://drive.google.com/open?id=1LqKBtN3MY4ZTH9msoFnU9GzuBRxXKXOq)
 
-# Credit
+# Credits
 The application Recipe Apps data from TheMealDB API
 
 URL: https://www.themealdb.com/api.php
