@@ -3,12 +3,14 @@ package net.hafiznaufalr.recipeapps.ui.main
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.tv_name
 import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.db.recent.RecentHelper
 import net.hafiznaufalr.recipeapps.model.Category
@@ -102,6 +104,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             val intent = Intent(this, BookMarkActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     private fun prepareRv() {

@@ -1,5 +1,7 @@
 package net.hafiznaufalr.recipeapps.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -38,6 +40,10 @@ class DetailActivity : BaseActivity(), DetailContract.View {
         sqliteOpenHelper()
         actionBack()
         getData(id)
+        getDate()
+    }
+
+    private fun getDate() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val date = Calendar.getInstance().time
         now = dateFormat.format(date).toString()
@@ -83,6 +89,14 @@ class DetailActivity : BaseActivity(), DetailContract.View {
         prepareBookmark(meal)
         displayBookmarkStatus(bookmarkHelper.isBookmarked(meal.idMeal))
         checkView(meal)
+        launchYoutube(meal.strYoutube)
+    }
+
+    private fun launchYoutube(strYoutube: String) {
+        cv_youtube.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(strYoutube))
+            startActivity(intent)
+        }
     }
 
     private fun checkView(meal: Recipe) {

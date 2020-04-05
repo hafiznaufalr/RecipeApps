@@ -19,17 +19,57 @@
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_youtube"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="8dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_youtube"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/logo_yt"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_toRightOf="@id/iv_youtube"
+                        android:layout_toEndOf="@id/iv_youtube"
+                        android:layout_centerVertical="true"
+                        android:textSize="18sp"
+                        android:text="@string/watch_video_tutorial"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:textColor="@android:color/black"
+                        />
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/cv_category"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:padding="8dp"
                 app:cardCornerRadius="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardView2"
+                app:layout_constraintEnd_toStartOf="@+id/cv_country"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/cv_youtube">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,7 +99,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/cv_country"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -68,8 +108,8 @@
                 android:padding="8dp"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintStart_toEndOf="@+id/cv_category"
+                app:layout_constraintTop_toBottomOf="@id/cv_youtube">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -110,10 +150,10 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_country" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
+                android:id="@+id/cv_instructions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -143,10 +183,10 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_instructions" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+                android:id="@+id/cv_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -161,8 +201,7 @@
                     android:id="@+id/lv_ingredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_ingredients"
-                    />
+                    tools:listitem="@layout/item_ingredients" />
 
             </androidx.cardview.widget.CardView>
 
@@ -220,28 +259,28 @@
 
                     <TextView
                         android:id="@+id/tv_name"
-                        android:textColor="@android:color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/poppinssemibold"
-                        tools:text="Lasagna"
-                        android:maxLines="1"
-                        android:layout_toRightOf="@id/ic_arrow_back"
-                        android:layout_toEndOf="@id/ic_arrow_back"
+                        android:layout_toStartOf="@id/iv_bookmark"
                         android:layout_toLeftOf="@id/iv_bookmark"
-                        android:layout_toStartOf="@id/iv_bookmark" />
+                        android:layout_toEndOf="@id/ic_arrow_back"
+                        android:layout_toRightOf="@id/ic_arrow_back"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        tools:text="Lasagna" />
 
 
                     <ImageView
                         android:id="@+id/iv_bookmark"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_bookmark_border_24dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bookmark_border_24dp" />
 
                 </RelativeLayout>
 
