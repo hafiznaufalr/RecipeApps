@@ -7,9 +7,15 @@
     <string name="remove_bookmark">Remove From Bookmark</string>
     <string name="add_bookmark">Add To Bookmark</string>
     <string name="empty_bookmark">Empty Bookmark</string>
-    <string name="recently_viewed">Recently Viewed</string>
-    <string name="category">Category</string>
+    <string name="recently_viewed">Recent</string>
     <string name="search">Search</string>
     <string name="no_data">No Results Found</string>
     <string name="empty_data">Empty Data</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="category">Category</string>
+    <string name="lorem">Lorem Ipsum Dolor Sit Amet, Bohcap Mehiku Pinktos</string>
+    <string name="empty_recent">Empty Recent</string>
+    <string name="clear">Clear All</string>
+    <string name="clear_recent">Clear Recent Success</string>
 </resources>

@@ -47,10 +47,15 @@ class CategoryActivity : BaseActivity(), CategoryContract.View {
         presenter.dropView()
     }
 
-    private fun getData(category: String?) {
+    override fun onResume() {
+        super.onResume()
+        val category = intent.getStringExtra("category")
         presenter.getDataByCategory(category)
     }
 
+    private fun getData(category: String?) {
+        presenter.getDataByCategory(category)
+    }
 
     private fun actionBack() {
         iv_arrow_back.setOnClickListener {

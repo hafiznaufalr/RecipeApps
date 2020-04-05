@@ -1,6 +1,7 @@
 package net.hafiznaufalr.recipeapps.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class RecipeResponse(
     @SerializedName("meals")
@@ -140,4 +141,15 @@ data class Filter(
     val strMeal: String,
     @SerializedName("strMealThumb")
     val strMealThumb: String
+)
+
+data class Recent(
+    @SerializedName("idMeal")
+    val idMeal: String,
+    @SerializedName("strMeal")
+    val strMeal: String,
+    @SerializedName("strMealThumb")
+    val strMealThumb: String,
+    @SerializedName("timeViewed")
+    val timeViewed: String
 )

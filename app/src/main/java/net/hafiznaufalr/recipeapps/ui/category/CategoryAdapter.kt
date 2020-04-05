@@ -2,19 +2,17 @@ package net.hafiznaufalr.recipeapps.ui.category
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_recipe.view.*
 import net.hafiznaufalr.recipeapps.R
-import net.hafiznaufalr.recipeapps.db.BookmarkHelper
+import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkHelper
 import net.hafiznaufalr.recipeapps.model.Filter
-import net.hafiznaufalr.recipeapps.ui.search.SearchAdapter
+import net.hafiznaufalr.recipeapps.ui.detail.DetailActivity
 
 class CategoryAdapter(
     private val context: Context,
@@ -40,6 +38,11 @@ class CategoryAdapter(
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
 
+        view.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("idMeal", data[position].idMeal)
+            context.startActivity(intent)
+        }
     }
 
     private fun prepareBookmark(view: View, position: Int) {

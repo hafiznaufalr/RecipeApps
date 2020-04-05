@@ -1,8 +1,6 @@
 package net.hafiznaufalr.recipeapps.ui.detail
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import net.hafiznaufalr.recipeapps.network.NetworkService
 import net.hafiznaufalr.recipeapps.ui.base.BasePresenter
 
@@ -10,6 +8,8 @@ class DetailPresenter: BasePresenter<DetailContract.View>, DetailContract.Presen
 
     var view: DetailContract.View? = null
     private val dataSource = NetworkService.create()
+    private val job = SupervisorJob()
+    private val scope = CoroutineScope(job + Dispatchers.Main)
 
     override fun takeView(view: DetailContract.View) {
         this.view = view
@@ -19,8 +19,8 @@ class DetailPresenter: BasePresenter<DetailContract.View>, DetailContract.Presen
         this.view = null
     }
 
-    override fun getDataDetailRecipe(idMeal: String) {
-        GlobalScope.launch(Dispatchers.Main) {
+    override fun getDataDetailRecipe(idMeal: String?) {
+        scope.launch{
             view?.showProgress()
             try {
                 val data = dataSource.getDetailRecipe(idMeal)

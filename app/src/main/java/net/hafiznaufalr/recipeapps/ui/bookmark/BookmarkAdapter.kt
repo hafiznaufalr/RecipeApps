@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_recipe.view.*
 import net.hafiznaufalr.recipeapps.R
-import net.hafiznaufalr.recipeapps.db.BookmarkHelper
+import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkHelper
 import net.hafiznaufalr.recipeapps.model.Filter
+import net.hafiznaufalr.recipeapps.ui.detail.DetailActivity
 
 class BookmarkAdapter(private val context: Context,
                       private val data : List<Filter>
@@ -37,6 +38,13 @@ class BookmarkAdapter(private val context: Context,
         Glide.with(context).load(data[position].strMealThumb).into(view.iv_recipe)
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
+
+        view.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("idMeal", data[position].idMeal)
+            context.startActivity(intent)
+        }
+
     }
 
     private fun displayBookmarkStatus(view: View, bookmarked: Boolean) {

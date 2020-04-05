@@ -1,28 +1,33 @@
-package net.hafiznaufalr.recipeapps.db
+package net.hafiznaufalr.recipeapps.db.bookmark
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import net.hafiznaufalr.recipeapps.db.RecipeContract.MovieColumns.Companion.IDMEAL
-import net.hafiznaufalr.recipeapps.db.RecipeContract.MovieColumns.Companion.STRMEAL
-import net.hafiznaufalr.recipeapps.db.RecipeContract.MovieColumns.Companion.STRMEALTHUMB
+import net.hafiznaufalr.recipeapps.db.DBRecipeHelper
+import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkContract.BookmarkColumns.Companion.IDMEAL
+import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkContract.BookmarkColumns.Companion.STRMEAL
+import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkContract.BookmarkColumns.Companion.STRMEALTHUMB
 import net.hafiznaufalr.recipeapps.model.Filter
 import java.sql.SQLException
 
 class BookmarkHelper(context: Context) {
-    val DATABASE_TABLE = RecipeContract().TABLE_RECIPE
+    val DATABASE_TABLE = BookmarkContract().TABLE_BOOKMARK
     var databaseHelper = DBRecipeHelper(context)
     lateinit var database: SQLiteDatabase
 
     companion object {
 
-        @Volatile private var INSTANCE: BookmarkHelper? = null
+        @Volatile
+        private var INSTANCE: BookmarkHelper? = null
 
         fun getInstance(context: Context): BookmarkHelper =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: BookmarkHelper(context)
-            }
-
+            INSTANCE
+                ?: synchronized(this) {
+                    INSTANCE
+                        ?: BookmarkHelper(
+                            context
+                        )
+                }
     }
 
 
@@ -88,7 +93,7 @@ class BookmarkHelper(context: Context) {
     }
 
     fun deleteRecipe(id: String): Int {
-        return database.delete(RecipeContract().TABLE_RECIPE, "$IDMEAL = '$id'", null)
+        return database.delete(BookmarkContract().TABLE_BOOKMARK, "$IDMEAL = '$id'", null)
     }
 
 }

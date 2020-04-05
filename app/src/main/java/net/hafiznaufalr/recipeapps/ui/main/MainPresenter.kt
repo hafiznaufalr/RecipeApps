@@ -1,8 +1,6 @@
 package net.hafiznaufalr.recipeapps.ui.main
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import net.hafiznaufalr.recipeapps.network.NetworkService
 import net.hafiznaufalr.recipeapps.ui.base.BasePresenter
 
@@ -10,6 +8,8 @@ class MainPresenter: BasePresenter<MainContract.View>, MainContract.Presenter {
 
     var view: MainContract.View? = null
     private val dataSource = NetworkService.create()
+    private val job = SupervisorJob()
+    private val scope = CoroutineScope(job + Dispatchers.Main)
 
     override fun takeView(view: MainContract.View) {
         this.view = view
@@ -20,7 +20,7 @@ class MainPresenter: BasePresenter<MainContract.View>, MainContract.Presenter {
     }
 
     override fun getDataRecipeRandom() {
-        GlobalScope.launch(Dispatchers.Main) {
+        scope.launch {
             view?.showProgress()
             try {
                 val data = dataSource.getRandomRecipe()
@@ -35,7 +35,7 @@ class MainPresenter: BasePresenter<MainContract.View>, MainContract.Presenter {
     }
 
     override fun getDataCategory() {
-        GlobalScope.launch(Dispatchers.Main) {
+        scope.launch {
             view?.showProgress()
             try {
                 val data = dataSource.getCategoriesRecipe()

@@ -30,5 +30,5 @@ interface ApiService {
     @GET("api/json/v1/1/lookup.php")
     fun getDetailRecipe(
         @Query("i") idMeal: String?
-    ): Deferred<Recipe>
+    ): Deferred<RecipeResponse>
 }

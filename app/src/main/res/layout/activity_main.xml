@@ -80,7 +80,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/image"
-                    android:scaleType="centerCrop"
+                    android:scaleX="2"
+                    android:scaleY="2"
                     tools:src="@drawable/sample" />
 
                 <TextView
@@ -91,6 +92,7 @@
                     android:fontFamily="@font/poppinssemibold"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
+                    android:maxLines="1"
                     tools:text="Lasagna" />
             </androidx.cardview.widget.CardView>
 
@@ -118,7 +120,7 @@
 
             <TextView
                 android:id="@+id/tv_recently_viewed"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rv_category"
                 android:layout_marginStart="16dp"
@@ -129,13 +131,41 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/tv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_category"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/clear"
+                android:textSize="14sp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recently_viewed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_recently_viewed"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_recipe" />
+                tools:listitem="@layout/item_recipe"
+                />
+
+            <TextView
+                android:id="@+id/tv_no_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_recent"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinssemibold"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/tv_recently_viewed"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
