@@ -20,8 +20,8 @@ import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
 
 
 class SearchActivity: BaseActivity(), SearchContract.View {
-    lateinit var presenter: SearchContract.Presenter
-    lateinit var adapter: SearchAdapter
+    private lateinit var presenter: SearchContract.Presenter
+    private lateinit var adapter: SearchAdapter
     private var listData: MutableList<Filter> = mutableListOf()
 
     override fun onActivityReady(savedInstanceState: Bundle?) {

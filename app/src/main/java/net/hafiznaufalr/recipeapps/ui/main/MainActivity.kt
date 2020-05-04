@@ -26,8 +26,8 @@ import net.hafiznaufalr.recipeapps.ui.search.SearchActivity
 class MainActivity : BaseActivity(), MainContract.View {
     lateinit var presenter: MainContract.Presenter
     lateinit var adapter: CategoryRecipeAdapter
-    lateinit var recentAdapter: RecentViewAdapter
-    lateinit var recentHelper: RecentHelper
+    private lateinit var recentAdapter: RecentViewAdapter
+    private lateinit var recentHelper: RecentHelper
     private var listCategory: MutableList<Category> = mutableListOf()
     private var listRecent: ArrayList<Filter> = arrayListOf()
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_category.view.*
+import net.hafiznaufalr.recipeapps.BuildConfig.PREVIEW
 import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.model.Category
 import net.hafiznaufalr.recipeapps.ui.category.CategoryActivity

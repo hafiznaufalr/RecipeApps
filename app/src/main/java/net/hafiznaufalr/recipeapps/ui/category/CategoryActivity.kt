@@ -10,8 +10,8 @@ import net.hafiznaufalr.recipeapps.model.FilterResponse
 import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
 
 class CategoryActivity : BaseActivity(), CategoryContract.View {
-    lateinit var presenter: CategoryContract.Presenter
-    lateinit var adapter: CategoryAdapter
+    private lateinit var presenter: CategoryContract.Presenter
+    private lateinit var adapter: CategoryAdapter
     private var listRecipe: MutableList<Filter> = mutableListOf()
     override fun onActivityReady(savedInstanceState: Bundle?) {
         val category = intent.getStringExtra("category")
@@ -49,8 +49,7 @@ class CategoryActivity : BaseActivity(), CategoryContract.View {
 
     override fun onResume() {
         super.onResume()
-        val category = intent.getStringExtra("category")
-        presenter.getDataByCategory(category)
+        prepareRv()
     }
 
     private fun getData(category: String?) {

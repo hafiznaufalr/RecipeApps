@@ -10,8 +10,8 @@ import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
 import net.hafiznaufalr.recipeapps.ui.main.MainActivity
 
 class SplashActivity : BaseActivity() {
-    lateinit var bottomtotop: Animation
-    lateinit var smtobig: Animation
+    private lateinit var bottomtotop: Animation
+    private lateinit var smtobig: Animation
 
     override fun getLayoutId(): Int = R.layout.activity_splash
 

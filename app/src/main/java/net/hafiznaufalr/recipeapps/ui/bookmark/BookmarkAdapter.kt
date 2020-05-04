@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_recipe.view.*
+import net.hafiznaufalr.recipeapps.BuildConfig.PREVIEW
 import net.hafiznaufalr.recipeapps.R
 import net.hafiznaufalr.recipeapps.db.bookmark.BookmarkHelper
 import net.hafiznaufalr.recipeapps.model.Filter
@@ -18,7 +19,7 @@ class BookmarkAdapter(private val context: Context,
                       private val data : List<Filter>
 ): RecyclerView.Adapter<BookmarkAdapter.MyHolder>(){
 
-    lateinit var bookmarkHelper: BookmarkHelper
+    private lateinit var bookmarkHelper: BookmarkHelper
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyHolder {
         bookmarkHelper = BookmarkHelper.getInstance(context)
@@ -35,7 +36,7 @@ class BookmarkAdapter(private val context: Context,
         val view = holder.itemView
         view.tv_id_recipe.text = data[position].idMeal
         view.tv_name_recipe.text = data[position].strMeal
-        Glide.with(context).load(data[position].strMealThumb).into(view.iv_recipe)
+        Glide.with(context).load(data[position].strMealThumb + PREVIEW).placeholder(R.drawable.food_placeholder).into(view.iv_recipe)
         prepareBookmark(view, position)
         displayBookmarkStatus(view, bookmarkHelper.isBookmarked(data[position].idMeal))
 

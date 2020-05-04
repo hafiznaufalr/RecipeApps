@@ -9,8 +9,8 @@ import net.hafiznaufalr.recipeapps.model.Filter
 import net.hafiznaufalr.recipeapps.ui.base.BaseActivity
 
 class BookMarkActivity: BaseActivity() {
-    lateinit var bookmarkHelper: BookmarkHelper
-    lateinit var adapter: BookmarkAdapter
+    private lateinit var bookmarkHelper: BookmarkHelper
+    private lateinit var adapter: BookmarkAdapter
     private var listBookmark: ArrayList<Filter> = arrayListOf()
 
     override fun onActivityReady(savedInstanceState: Bundle?) {

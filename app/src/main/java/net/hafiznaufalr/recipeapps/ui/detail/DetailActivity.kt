@@ -23,13 +23,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DetailActivity : BaseActivity(), DetailContract.View {
-    lateinit var presenter: DetailContract.Presenter
-    lateinit var bookmarkHelper: BookmarkHelper
-    lateinit var recentHelper: RecentHelper
-    lateinit var bookedData: Filter
-    lateinit var dialog: SpotsDialog
-    lateinit var now: String
-    lateinit var recent: Recent
+    private lateinit var presenter: DetailContract.Presenter
+    private lateinit var bookmarkHelper: BookmarkHelper
+    private lateinit var recentHelper: RecentHelper
+    private lateinit var bookedData: Filter
+    private lateinit var dialog: SpotsDialog
+    private lateinit var now: String
+    private lateinit var recent: Recent
 
     override fun getLayoutId(): Int = R.layout.activity_detail
 
@@ -94,8 +94,12 @@ class DetailActivity : BaseActivity(), DetailContract.View {
 
     private fun launchYoutube(strYoutube: String) {
         cv_youtube.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(strYoutube))
-            startActivity(intent)
+            if (strYoutube == ""){
+                Toast.makeText(this, "There's nothing tutorial for this recipe", Toast.LENGTH_SHORT).show()
+            }else {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(strYoutube))
+                startActivity(intent)
+            }
         }
     }
 
