@@ -49,7 +49,7 @@ class CategoryActivity : BaseActivity(), CategoryContract.View {
 
     override fun onResume() {
         super.onResume()
-        prepareRv()
+        adapter.notifyDataSetChanged()
     }
 
     private fun getData(category: String?) {
@@ -66,7 +66,6 @@ class CategoryActivity : BaseActivity(), CategoryContract.View {
         listRecipe.clear()
         listRecipe.addAll(data.meals)
         adapter.notifyDataSetChanged()
-
     }
 
     override fun onDataCategoryFailure(throwable: Throwable) {

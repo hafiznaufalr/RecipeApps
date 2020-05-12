@@ -39,6 +39,7 @@ class BookMarkActivity: BaseActivity() {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         prepareRv()
